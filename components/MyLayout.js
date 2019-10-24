@@ -18,10 +18,11 @@ const styles =  {
     }
   }
 }
+
 const Layout = ({classes, ...props}) => (
   <div>
     <div className={classes.container}>
-  <Header />
+      <Header />
       {props.children}
     </div>
   </div>

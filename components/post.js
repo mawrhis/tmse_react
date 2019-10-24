@@ -1,4 +1,11 @@
-import StyledLayout from '../components/MyLayout';
+import StyledLayout from './MyLayout
+
+constructor(props) {
+  super(props);
+  this.state = {
+    value: null,
+  };
+}
 
 export default function About() {
   return (
