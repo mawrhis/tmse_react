@@ -1,19 +1,26 @@
-import StyledLayout from './MyLayout
+import { useRouter } from 'next/router';
+import injectSheet from 'react-jss';
 
-constructor(props) {
-  super(props);
-  this.state = {
-    value: null,
-  };
+const styles = {
 }
 
-export default function About() {
+const Post = ( props ) => {
+const router = useRouter();
   return (
     <div>
-      <StyledLayout>
-        <p>This is the about page</p>
-      </StyledLayout>
-      
+      <h1>{props.postTitle}</h1>
+      <p>This is the blog post content.</p>
+      <p><img src={props.postContent}></img></p>
     </div>
   );
-}
+};
+
+// const imageSource = function( string ) {
+//   // console.log('imageSource');
+//   let str = string;
+//   str.split(' ')
+//   .filter((string) => string.includes('src'))
+//   console.log('str', str);
+// }
+
+export default injectSheet(styles)(Post);

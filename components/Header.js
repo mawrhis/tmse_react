@@ -20,7 +20,7 @@ const styles =  {
   } 
 }
 
-const Header = ({classes}) => (
+const Header = ({classes, ...props}) => (
 <div>
   <div className={classes.logo}>
     <Link href="/">
@@ -28,9 +28,9 @@ const Header = ({classes}) => (
     </Link>
   </div>
   <div className={classes.menu}>
-    <Button text={'next'}></Button>
-    <Button text={'random'}></Button>
-    <Button text={'previous'}></Button>
+    <Button click={props.nextPost} text={'next'}></Button>
+    <Button click={props.randomPost} text={'random'}></Button>
+    <Button click={props.previousPost} text={'previous'}></Button>
   </div>
 </div>
 );

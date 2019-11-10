@@ -1,12 +1,24 @@
-import Layout from '../components/MyLayout';
-import Post from '../components/Post'
+import Posts from './posts';
+import React, { Component } from 'react';
+import Data from '../public/data/data.json';
 
-const Index = () => (
-  <div>
-  <Layout>
-    <Post></Post>
-  </Layout>
-  </div>
-);
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: 10
+    };
+    // const DATA = {}
+  }
+
+  render() {
+    return (
+      <div>
+        <Posts data={Data.data}>
+        </Posts>
+      </div>
+    );
+  }
+}
 
 export default Index;

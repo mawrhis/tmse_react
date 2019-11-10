@@ -41,7 +41,7 @@ const styles =  {
 
 const Button = ({classes, ...props}) => (
 <div >
-  <button className={classes.button}>{props.text}</button>
+  <button onClick={props.click} className={classes.button}>{props.text}</button>
 </div>
 );
 

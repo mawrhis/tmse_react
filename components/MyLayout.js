@@ -1,4 +1,3 @@
-import Header from './Header';
 import injectSheet from 'react-jss';
 
 const styles =  {
@@ -22,7 +21,6 @@ const styles =  {
 const Layout = ({classes, ...props}) => (
   <div>
     <div className={classes.container}>
-      <Header />
       {props.children}
     </div>
   </div>
