@@ -6,7 +6,7 @@ const styles =  {
     margin: '0 auto',
     width: '100%',
     gridTemplateColumns: '100%',
-    gridTemplateRows: '200px auto',
+    gridTemplateRows: '220px auto',
     gridColumnGap: '1rem',
     gridRowGap: '1rem',
 

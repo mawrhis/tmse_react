@@ -29,7 +29,7 @@ const styles =  {
 
     '&:disabled': {
       cursor: 'default',
-      color: 'grey',
+      color: 'lightGrey',
     },
     '&:disabled:hover': {
       backgroundColor: 'white',
@@ -41,7 +41,7 @@ const styles =  {
 
 const Button = ({classes, ...props}) => (
 <div >
-  <button onClick={props.click} className={classes.button}>{props.text}</button>
+  <button onClick={props.click} className={classes.button} disabled={props.disabled}>{props.text}</button>
 </div>
 );
 

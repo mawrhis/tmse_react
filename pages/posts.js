@@ -3,6 +3,9 @@ import Header from '../components/Header';
 import Post from '../components/Post'
 import React, { Component } from 'react';
 
+
+const FIRST_POST = 1
+
 class Posts extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +14,7 @@ class Posts extends React.Component {
       title:'',
       content:''
     };
+
     this.nextPost = this.nextPost.bind(this); //study - binding function
     this.previousPost = this.previousPost.bind(this);
     this.randomPost = this.randomPost.bind(this);
@@ -32,12 +36,19 @@ class Posts extends React.Component {
     }
   }
 
+  lastPost() {
+    return (this.props.data.length === this.state.post) ? true : false
+  }
+
+  firstPost() {
+    return (FIRST_POST === this.state.post) ? true : false
+  }
+
   nextPost() {
     let postNumber = this.state.post
     postNumber++
     this.setState({post: postNumber})
     this.currentPostData(postNumber)
-    console.log('next post')
   }
 
   previousPost() {
@@ -45,23 +56,27 @@ class Posts extends React.Component {
     postNumber--
     this.setState({post: postNumber})
     this.currentPostData(postNumber)
-    console.log('previous post')
   }
 
   randomPost() {
     let postSum = this.props.data.length
     let randomPostNumber = Math.floor(Math.random() * postSum)
-    console.log(randomPostNumber)
     this.setState({post: randomPostNumber})
     this.currentPostData(randomPostNumber)
   }
 
   render() {
+    console.log(this.state.post)
     return (
       <div>
         <Layout>
-          <Header nextPost={this.nextPost} previousPost={this.previousPost} randomPost={this.randomPost}></Header>
-          {this.state.post}
+          <Header 
+            nextPost={this.nextPost} 
+            lastPost={this.lastPost()}
+            firstPost={this.firstPost()} 
+            previousPost={this.previousPost} 
+            randomPost={this.randomPost}>
+            </Header>
           <Post post={this.state.post} postTitle={this.state.title} postContent={this.state.content}></Post>
         </Layout>
       </div>

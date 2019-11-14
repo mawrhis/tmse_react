@@ -28,9 +28,16 @@ const Header = ({classes, ...props}) => (
     </Link>
   </div>
   <div className={classes.menu}>
-    <Button click={props.nextPost} text={'next'}></Button>
+    <Button 
+      click={props.previousPost} 
+      text={'previous'}
+      disabled={props.firstPost}
+      ></Button>
     <Button click={props.randomPost} text={'random'}></Button>
-    <Button click={props.previousPost} text={'previous'}></Button>
+    <Button 
+      click={props.nextPost} 
+      disabled={props.lastPost}
+      text={'next'}></Button>
   </div>
 </div>
 );
