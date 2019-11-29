@@ -1,3 +1,17 @@
+// import { useRouter } from 'next/router';
+// import Layout from '../../components/MyLayout';
+
+// export default function Post() {
+//   const router = useRouter();
+
+//   return (
+//     <Layout>
+//       <h1>{router.query.id}</h1>
+//       <p>This is the blog post content.</p>
+//     </Layout>
+//   );
+// }
+
 import { useRouter } from 'next/router';
 import injectSheet from 'react-jss';
 
@@ -30,7 +44,7 @@ const router = useRouter();
 const gif = [31, 43, 60]
 
 const comicFile = function(number) {
-  let n = Number.NEGATIVE_INFINITY
+  let n = ''
   let numberSize = number.toString().length
   if (numberSize === 3) {
     n = number

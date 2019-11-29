@@ -75,7 +75,10 @@ class Posts extends React.Component {
             lastPost={this.lastPost()}
             firstPost={this.firstPost()} 
             previousPost={this.previousPost} 
-            randomPost={this.randomPost}>
+            randomPost={this.randomPost}
+            next={this.state.post + 1}
+            prev={this.state.post - 1}
+            >
             </Header>
           <Post post={this.state.post} postTitle={this.state.title} postContent={this.state.content}></Post>
         </Layout>

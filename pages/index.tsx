@@ -8,13 +8,15 @@ class Index extends React.Component {
     this.state = {
       post: 10
     };
-    // const DATA = {}
   }
 
   render() {
+    
+  const DATA = Data.data 
+console.log('data', DATA)
     return (
       <div>
-        <Posts data={Data.data}>
+        <Posts {...DATA}>
         </Posts>
       </div>
     );

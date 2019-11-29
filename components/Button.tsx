@@ -1,4 +1,5 @@
 import injectSheet from 'react-jss'
+import Link from 'next/link';
 
 const styles =  {    
   button: {
@@ -40,8 +41,13 @@ const styles =  {
 }
 
 const Button = ({classes, ...props}) => (
-<div >
-  <button onClick={props.click} className={classes.button} disabled={props.disabled}>{props.text}</button>
+<div>
+  <div >
+    <button onClick={props.click} className={classes.button} disabled={props.disabled}>{props.text}</button>
+  </div>
+  <Link href="/p/[id]" as={`/p/${props.id}`}>
+    <a>{props.id}</a>
+  </Link>
 </div>
 );
 

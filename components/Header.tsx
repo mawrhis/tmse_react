@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import injectSheet from 'react-jss'
-import Button from './Button.js'
+import Button from './Button'
 
 const styles =  {    
   logo: {
@@ -32,12 +32,15 @@ const Header = ({classes, ...props}) => (
       click={props.previousPost} 
       text={'previous'}
       disabled={props.firstPost}
+      id={props.next}
       ></Button>
     <Button click={props.randomPost} text={'random'}></Button>
     <Button 
       click={props.nextPost} 
       disabled={props.lastPost}
-      text={'next'}></Button>
+      text={'next'}
+      id={props.prev}>
+      </Button>
   </div>
 </div>
 );
