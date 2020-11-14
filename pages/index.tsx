@@ -1,26 +1,30 @@
 import Posts from './posts';
-import React, { Component } from 'react';
-import Data from '../public/data/data.json';
+import React, { Component, memo, useState } from 'react';
+import Data from '../public/data/data';
+import { createUseStyles } from 'react-jss';
 
-class Index extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      post: 10
-    };
-  }
-
-  render() {
-    
-  const DATA = Data.data 
-console.log('data', DATA)
-    return (
-      <div>
-        <Posts {...DATA}>
-        </Posts>
-      </div>
-    );
-  }
+export interface Item {
+  id: number
+  content: string
+  published: string
+  tags: string[] | string
+  title?: string
 }
 
-export default Index;
+interface IndexProps {}
+
+const useStyles = createUseStyles({
+});
+
+const Index = ({ }: IndexProps) => {
+const classes = useStyles();
+// console.log('Data', Data);
+
+  return (
+    <div>
+      <Posts data={Data}/>
+    </div>
+  )
+};
+
+export default memo(Index);
