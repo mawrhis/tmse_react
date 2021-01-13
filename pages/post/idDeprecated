@@ -1,21 +1,11 @@
-// import { useRouter } from 'next/router';
-// import Layout from '../../components/MyLayout';
-
-// export default function Post() {
-//   const router = useRouter();
-
-//   return (
-//     <Layout>
-//       <h1>{router.query.id}</h1>
-//       <p>This is the blog post content.</p>
-//     </Layout>
-//   );
-// }
-
 import { useRouter } from 'next/router';
-import injectSheet from 'react-jss';
+import { memo } from 'react';
+import { createUseStyles } from 'react-jss';
 
-const styles =  {    
+
+interface ComponentProps {}
+
+const useStyles = createUseStyles({
   post: {
     width: '100%',
     '& img':{
@@ -29,17 +19,11 @@ const styles =  {
     color: '#5a5a5a',
     fontFamily: 'Sans-serif, Arial'
   }
-}
+});
 
-const Post = ( {classes, ...props} ) => {
+const Post = (  {...props} ) => {
 const router = useRouter();
-  return (
-    <div className={classes.post}>
-      <h1 className={classes.postTitle}>{props.postTitle}</h1>
-      <img src={`/img/comics/${comicFile(props.post)}`}></img>
-    </div>
-  );
-};
+const classes = useStyles();
 
 const gif = [31, 43, 60]
 
@@ -67,5 +51,13 @@ const imgSuffix = function(number) {
     }
 }
 
+return (
+  <div className={classes.post}>
+    <h1 className={classes.postTitle}>{props.postTitle}</h1>
+    {/* <img src={`/img/comics/${comicFile(props.post)}`}></img> */}
+  </div>
+);
+};
 
-export default injectSheet(styles)(Post);
+
+export default memo(Post);

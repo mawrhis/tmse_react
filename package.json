@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next -p 8000",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8004",
+    "export": "next export"
   },
   "keywords": [],
   "author": "",
