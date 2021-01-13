@@ -22,7 +22,7 @@ const classes = useStyles();
 // console.log('Data', Data);
 
 useEffect(()=> {
-  // router.push('/post/1', '/post/1');
+  router.push('/post/1', '/post/1');
 })
 
   return (
