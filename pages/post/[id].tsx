@@ -6,7 +6,6 @@ import Data from '../../public/data/data';
 import { createUseStyles } from 'react-jss';
 import { Item } from '../.';
 import { useRouter } from 'next/router'
-import data from '../../out/data/data';
 
 
 interface PostsProps {
@@ -25,11 +24,12 @@ export async function getStaticProps() {
 
 const pagesToGenerate = () => {
   let paths = []
-  data.forEach((item, index) => paths.push({params: {id: (index + 1).toString()}}))
+  Data.forEach((item, index) => paths.push({params: {id: (index + 1).toString()}}))
   return paths;
 }
 
-console.log(...pagesToGenerate())
+
+// console.log(...pagesToGenerate())
 
 export async function getStaticPaths() {
   return {
@@ -60,13 +60,12 @@ const onRandomPostClick = () => {
 const isLastPost = postNumber === data.length;
 const isFirstPost = postNumber === 1;
 
-const currentPost = data.find((post) => postNumber === post.id)
+const currentPost = data.find((post) => postNumber === post.id || 1);
 
 useEffect(() => {
   router.push(`${postNumber}`, `${postNumber}`);
 },[postNumber])
 
-console.log('data', data.length)
   return (
     <div>
     <Layout>
