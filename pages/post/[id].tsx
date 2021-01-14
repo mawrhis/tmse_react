@@ -36,7 +36,7 @@ export async function getStaticPaths() {
     paths: [
       ...pagesToGenerate()
     ],
-    fallback: true // See the "fallback" section below
+    fallback: false // See the "fallback" section below
   };
 }
 
