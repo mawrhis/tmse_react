@@ -5,19 +5,53 @@ import React, { Component, memo, useEffect, useState } from 'react';
 import Data from '../../public/data/data';
 import { createUseStyles } from 'react-jss';
 import { Item } from '../.';
-import router, { Router } from 'next/router';
+import { useRouter } from 'next/router'
+import data from '../../out/data/data';
 
 
 interface PostsProps {
   data: Item[] ;
 }
 
+export async function getStaticProps() {
+  const data = Data;
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+const pagesToGenerate = () => {
+  let paths = []
+  data.forEach((item, index) => paths.push({params: {id: (index + 1).toString()}}))
+  return paths;
+}
+
+console.log(...pagesToGenerate())
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      ...pagesToGenerate()
+    ],
+    fallback: true // See the "fallback" section below
+  };
+}
+
 const useStyles = createUseStyles({
 });
 
 const PostsRoute = ({ data = Data }: PostsProps) => {
+  const router = useRouter();
 const classes = useStyles();
-const [postNumber, setPostNumber] = useState(data.length)
+if (router === undefined) {
+  return null;
+}
+
+const { id } = router.query;
+const [postNumber, setPostNumber] = useState(parseInt(id as string));
 const onRandomPostClick = () => {
     let postSum = data.length
     setPostNumber(Math.floor(Math.random() * postSum - 1))
