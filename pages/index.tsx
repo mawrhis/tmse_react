@@ -21,8 +21,8 @@ const Index = ({ }: IndexProps) => {
 
 // We don't need the static css any more once we have launched our application.
 if (typeof window != 'undefined' && window.document) {
-  const ssStyles = document.getElementById('server-side-styles')
-  ssStyles.parentNode.removeChild(ssStyles)
+  const ssStyles = document?.getElementById('server-side-styles')
+  ssStyles?.parentNode?.removeChild(ssStyles)
 }
 
 useEffect(()=> {
