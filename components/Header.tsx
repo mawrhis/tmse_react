@@ -1,9 +1,5 @@
 import Link from 'next/link';
 import Button from './Button'
-
-
-
-
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
 

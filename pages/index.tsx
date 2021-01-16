@@ -3,6 +3,7 @@ import Data from '../public/data/data';
 import { createUseStyles } from 'react-jss';
 import router, { Router } from 'next/router';
 import Link from 'next/link';
+import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
 
 export interface Item {
   id: number
@@ -14,12 +15,13 @@ export interface Item {
 
 interface IndexProps {}
 
-const useStyles = createUseStyles({
-});
 
 const Index = ({ }: IndexProps) => {
-const classes = useStyles();
 // console.log('Data', Data);
+
+// We don't need the static css any more once we have launched our application.
+const ssStyles = document.getElementById('server-side-styles')
+ssStyles.parentNode.removeChild(ssStyles)
 
 useEffect(()=> {
   router.push(`/post/${Data.length}`, `/post/${Data.length}`);

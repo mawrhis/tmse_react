@@ -1,13 +1,10 @@
 import Layout from '../../components/MyLayout';
 import Header from '../../components/Header';
 import Post from '../../components/Post'
-import React, { Component, memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Data from '../../public/data/data';
-import { createUseStyles } from 'react-jss';
 import { Item } from '../.';
 import { useRouter } from 'next/router'
-
-
 interface PostsProps {
   data: Item[] ;
 }
@@ -19,6 +16,7 @@ export async function getStaticProps() {
     props: {
       data,
     },
+    revalidate: 1,
   }
 }
 
@@ -27,9 +25,6 @@ const pagesToGenerate = () => {
   Data.forEach((item, index) => paths.push({params: {id: (index + 1).toString()}}))
   return paths;
 }
-
-
-// console.log(...pagesToGenerate())
 
 export async function getStaticPaths() {
   return {
@@ -40,12 +35,8 @@ export async function getStaticPaths() {
   };
 }
 
-const useStyles = createUseStyles({
-});
-
 const PostsRoute = ({ data = Data }: PostsProps) => {
   const router = useRouter();
-const classes = useStyles();
 if (router === undefined) {
   return null;
 }
