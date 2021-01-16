@@ -20,8 +20,10 @@ const Index = ({ }: IndexProps) => {
 // console.log('Data', Data);
 
 // We don't need the static css any more once we have launched our application.
-const ssStyles = document.getElementById('server-side-styles')
-ssStyles.parentNode.removeChild(ssStyles)
+if (typeof window != 'undefined' && window.document) {
+  const ssStyles = document.getElementById('server-side-styles')
+  ssStyles.parentNode.removeChild(ssStyles)
+}
 
 useEffect(()=> {
   router.push(`/post/${Data.length}`, `/post/${Data.length}`);
