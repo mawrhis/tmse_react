@@ -51,7 +51,7 @@ const onRandomPostClick = () => {
 const isLastPost = postNumber === data.length;
 const isFirstPost = postNumber === 1;
 
-const currentPost = data.find((post) => postNumber === post.id || 1);
+const currentPost = data.find((post) => postNumber === post.id);
 
 useEffect(() => {
   router.push(`${postNumber}`, `${postNumber}`);
@@ -71,7 +71,7 @@ useEffect(() => {
         onNextPostClick={() => setPostNumber(postNumber + 1)}
         onPreviousPostClick={() => setPostNumber(postNumber - 1)}
         />
-      <Post post={postNumber} postTitle={currentPost.title || ''} postContent={currentPost.content}></Post>
+      <Post post={postNumber} postTitle={currentPost.title} postContent={currentPost.content}></Post>
     </Layout>
   </div>
   )
