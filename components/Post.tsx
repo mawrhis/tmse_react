@@ -1,27 +1,12 @@
 import { useRouter } from 'next/router';
 import injectSheet from 'react-jss';
+import styles from './Post.module.sass'
 
-const styles =  {    
-  post: {
-    width: '100%',
-    '& img':{
-      maxWidth: '100%',
-      width: '900px'
-    }
-  },
-  postTitle: {
-    textAlign: 'center',
-    margin: '.5rem 0',
-    color: '#5a5a5a',
-    fontFamily: 'Sans-serif, Arial'
-  }
-}
-
-const Post = ( {classes, ...props} ) => {
+const Post = ( { ...props} ) => {
 const router = useRouter();
   return (
-    <div className={classes.post}>
-      <h1 className={classes.postTitle}>{props.postTitle}</h1>
+    <div className={styles.post}>
+      <h1 className={styles.postTitle}>{props.postTitle}</h1>
       <img src={`/img/comics/${comicFile(props.post)}`}></img>
     </div>
   );
@@ -54,4 +39,4 @@ const imgSuffix = function(number) {
 }
 
 
-export default injectSheet(styles)(Post);
+export default (Post);

@@ -5,6 +5,7 @@ import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
 class JssDocument extends Document {
   static async getInitialProps(ctx) {
 
+
     const registry = new SheetsRegistry();
     const generateId = createGenerateId();
     const originalRenderPage = ctx.renderPage;

@@ -4,6 +4,7 @@ import { createUseStyles } from 'react-jss';
 import router, { Router } from 'next/router';
 import Link from 'next/link';
 import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
+import Post from './post';
 
 export interface Item {
   id: number
@@ -15,9 +16,7 @@ export interface Item {
 
 interface IndexProps {}
 
-
 const Index = ({ }: IndexProps) => {
-// console.log('Data', Data);
 
 // We don't need the static css any more once we have launched our application.
 if (typeof window != 'undefined' && window.document) {
@@ -30,9 +29,7 @@ useEffect(()=> {
 })
 
   return (
-    <div>
-      <Link href='post/1'>odkaz</Link>
-    </div>
+    <></>
   )
 };
 

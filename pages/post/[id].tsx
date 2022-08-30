@@ -1,6 +1,4 @@
-import Layout from '../../components/MyLayout';
-import Header from '../../components/Header';
-import Post from '../../components/Post'
+import PostPageContent from './PostPageContent'
 import React, { memo, useEffect, useState } from 'react';
 import Data from '../../public/data/data';
 import { Item } from '../.';
@@ -37,43 +35,26 @@ export async function getStaticPaths() {
 
 const PostsRoute = ({ data = Data }: PostsProps) => {
   const router = useRouter();
-if (router === undefined) {
+  if (router === undefined) {
   return null;
-}
-
-const { id } = router.query;
-const [postNumber, setPostNumber] = useState(parseInt(id as string));
-const onRandomPostClick = () => {
-    let postSum = data.length
-    setPostNumber(Math.floor(Math.random() * postSum - 1))
-};
-
-const isLastPost = postNumber === data.length;
-const isFirstPost = postNumber === 1;
-
-const currentPost = data.find((post) => postNumber === post.id);
-
-useEffect(() => {
-  router.push(`${postNumber}`, `${postNumber}`);
-},[postNumber])
+  }
+  
+  
+  
+  const { id } = router.query;
+  const [postNumber, setPostNumber] = useState(parseInt(id as string));
+  const onRandomPostClick = () => {
+      let postSum = data.length
+      setPostNumber(Math.floor(Math.random() * postSum - 1))
+  };
+  
+  const isLastPost = postNumber === data.length;
+  const isFirstPost = postNumber === 1;
+  
+  const currentPost = data.find((post) => postNumber || data.length === post.id);
 
   return (
-    <div>
-    <Layout>
-      <Header 
-        // onNextPostClick={onNextPostClick} 
-        // onNewestPostClick={onNewestPostClick}
-        // OnOldestPostClick={OnOldestPostClick} 
-        // previousPost={setPostNumber(postNumber + 1)} 
-        isFirstPost={isFirstPost}
-        isLastPost={isLastPost}
-        onRandomPostClick={onRandomPostClick}
-        onNextPostClick={() => setPostNumber(postNumber + 1)}
-        onPreviousPostClick={() => setPostNumber(postNumber - 1)}
-        />
-      <Post post={postNumber} postTitle={currentPost.title} postContent={currentPost.content}></Post>
-    </Layout>
-  </div>
+   <PostPageContent onRandomPostClick={onRandomPostClick} isLastPost={isLastPost} postNumber={postNumber} currentPost={currentPost} isFirstPost={isFirstPost} setPostNumber={setPostNumber} ></PostPageContent>
   )
 };
 
