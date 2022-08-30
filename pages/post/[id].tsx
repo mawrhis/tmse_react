@@ -1,4 +1,4 @@
-import PostPageContent from './PostPageContent'
+import PostPageContent from '../../components/PostPageContent'
 import React, { memo, useEffect, useState } from 'react';
 import Data from '../../public/data/data';
 import { Item } from '../.';

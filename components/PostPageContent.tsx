@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import Layout from '../../components/MyLayout';
-import PostContent from '../../components/Post';
-import Header from '../../components/Header';
+import Layout from './MyLayout';
+import PostContent from './Post';
+import Header from './Header';
 import { useRouter } from 'next/router'
-import Data from '../../public/data/data';
-import { Item } from '..';
+import Data from '../public/data/data';
+import { Item } from '../pages';
 
 interface PostPageContentProps {
   isLastPost: boolean;
