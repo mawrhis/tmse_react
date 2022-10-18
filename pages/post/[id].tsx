@@ -51,7 +51,7 @@ const PostsRoute = ({ data = Data }: PostsProps) => {
   const isLastPost = postNumber === data.length;
   const isFirstPost = postNumber === 1;
   
-  const currentPost = data.find((post) => postNumber || data.length === post.id);
+  const currentPost = data.find((post) => post.id === postNumber);
 
   return (
    <PostPageContent onRandomPostClick={onRandomPostClick} isLastPost={isLastPost} postNumber={postNumber} currentPost={currentPost} isFirstPost={isFirstPost} setPostNumber={setPostNumber} ></PostPageContent>
