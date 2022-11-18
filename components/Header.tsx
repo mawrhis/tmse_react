@@ -1,61 +1,59 @@
 import Link from 'next/link';
-import Button from './Button'
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
+import Button from './Button';
 
 interface HeaderProps {
-  onPreviousPostClick: () => void;
-  onNextPostClick: () => void;
-  onRandomPostClick: () => void;
   isFirstPost: boolean;
   isLastPost: boolean;
+  onNextPostClick: () => void;
+  onPreviousPostClick: () => void;
+  onRandomPostClick: () => void;
 }
 
-const useStyles = createUseStyles(
-  {    
-    logo: {
+const useStyles = createUseStyles({
+  logo: {
+    width: '100%',
+    textAlign: 'center',
+    marginTop: '1rem',
+    '& img': {
+      position: 'relative',
       width: '100%',
-      textAlign: 'center',
-      marginTop: '1rem',
-      '& img':{
-        position: 'relative',
-        width: '100%'
-      }
     },
-    menu: {
-      width: '100%',
-      margin: '0 auto',
-      display: 'flex',
-      justifyContent: 'center'
-    } 
-  }
-);
+  },
+  menu: {
+    width: '100%',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+});
 
-const Header = ({ onNextPostClick, onPreviousPostClick, onRandomPostClick, isFirstPost, isLastPost }: HeaderProps) => {
-const classes = useStyles();
+const Header = ({
+  onNextPostClick,
+  onPreviousPostClick,
+  onRandomPostClick,
+  isFirstPost,
+  isLastPost,
+}: HeaderProps) => {
+  const classes = useStyles();
 
   return (
     <div>
-  <div className={classes.logo}>
-    <Link href="/">
-      <a><img src="/img/logo.png"/></a>
-    </Link>
-  </div>
-  <div className={classes.menu}>
-    <Button 
-      click={onPreviousPostClick} 
-      text={'previous'}
-      disabled={isFirstPost}
-      ></Button>
-    <Button click={onRandomPostClick} text={'random'}></Button>
-    <Button 
-      click={onNextPostClick} 
-      disabled={isLastPost}
-      text={'next'}>
-      </Button>
-  </div>
-</div>
-  )
+      <div className={classes.logo}>
+        <Link href="/">
+          <p>
+            <img alt="logo" src="/img/logo.png" />
+          </p>
+        </Link>
+      </div>
+      <div className={classes.menu}>
+        <Button click={onPreviousPostClick} disabled={isFirstPost} text="previous" />
+        <Button click={onRandomPostClick} text="random" />
+        <Button click={onNextPostClick} disabled={isLastPost} text="next" />
+      </div>
+    </div>
+  );
 };
 
 export default memo(Header);

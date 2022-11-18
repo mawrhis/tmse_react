@@ -1,7 +1,8 @@
-import injectSheet from 'react-jss'
+import injectSheet from 'react-jss';
 import Link from 'next/link';
+import React from 'react';
 
-const styles =  {    
+const styles = {
   button: {
     width: '100px',
     height: '32px',
@@ -36,19 +37,26 @@ const styles =  {
       backgroundColor: 'white',
       boxShadow: 'none',
       border: 'none',
-    } 
-  }
-}
+    },
+  },
+};
 
-const Button = ({classes, ...props}) => (
-<div>
-  <div >
-    <button onClick={props.click} className={classes.button} disabled={props.disabled}>{props.text}</button>
+const Button = ({ classes, ...props }) => (
+  <div>
+    <div>
+      <button
+        className={classes.button}
+        disabled={props.disabled}
+        type="button"
+        onClick={props.click}
+      >
+        {props.text}
+      </button>
+    </div>
+    <Link as={`/p/${props.id}`} href="/p/[id]">
+      <p>{props.id}</p>
+    </Link>
   </div>
-  <Link href="/p/[id]" as={`/p/${props.id}`}>
-    <a>{props.id}</a>
-  </Link>
-</div>
 );
 
 export default injectSheet(styles)(Button);

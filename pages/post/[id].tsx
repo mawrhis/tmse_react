@@ -1,10 +1,11 @@
-import PostPageContent from '../../components/PostPageContent'
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
+import { useRouter } from 'next/router';
+import PostPageContent from '../../components/PostPageContent';
 import Data from '../../public/data/data';
-import { Item } from '../.';
-import { useRouter } from 'next/router'
+import { Item } from '..';
+
 interface PostsProps {
-  data: Item[] ;
+  data: Item[];
 }
 
 export async function getStaticProps() {
@@ -15,47 +16,47 @@ export async function getStaticProps() {
       data,
     },
     revalidate: 1,
-  }
+  };
 }
 
 const pagesToGenerate = () => {
-  let paths = []
-  Data.forEach((item, index) => paths.push({params: {id: (index + 1).toString()}}))
+  const paths = [];
+  Data.forEach((item, index) => paths.push({ params: { id: (index + 1).toString() } }));
   return paths;
-}
+};
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      ...pagesToGenerate()
-    ],
-    fallback: false // See the "fallback" section below
+    paths: [...pagesToGenerate()],
+    fallback: false, // See the "fallback" section below
   };
 }
 
 const PostsRoute = ({ data = Data }: PostsProps) => {
   const router = useRouter();
-  if (router === undefined) {
-  return null;
-  }
-  
-  
-  
+
   const { id } = router.query;
-  const [postNumber, setPostNumber] = useState(parseInt(id as string));
+  const [postNumber, setPostNumber] = useState(parseInt(id as string, 10));
   const onRandomPostClick = () => {
-      let postSum = data.length
-      setPostNumber(Math.floor(Math.random() * postSum - 1))
+    const postSum = data.length;
+    setPostNumber(Math.floor(Math.random() * postSum - 1));
   };
-  
+
   const isLastPost = postNumber === data.length;
   const isFirstPost = postNumber === 1;
-  
+
   const currentPost = data.find((post) => post.id === postNumber);
 
   return (
-   <PostPageContent onRandomPostClick={onRandomPostClick} isLastPost={isLastPost} postNumber={postNumber} currentPost={currentPost} isFirstPost={isFirstPost} setPostNumber={setPostNumber} ></PostPageContent>
-  )
+    <PostPageContent
+      currentPost={currentPost}
+      isFirstPost={isFirstPost}
+      isLastPost={isLastPost}
+      postNumber={postNumber}
+      setPostNumber={setPostNumber}
+      onRandomPostClick={onRandomPostClick}
+    />
+  );
 };
 
 export default memo(PostsRoute);

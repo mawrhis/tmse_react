@@ -1,13 +1,10 @@
-import injectSheet from 'react-jss';
-import styles from './MyLayout.module.sass'
+import React from 'react';
+import styles from './MyLayout.module.scss';
 
-
-const Layout = ({...props}) => (
+const Layout = ({ ...props }) => (
   <div>
-    <div className={styles.container}>
-      {props.children}
-    </div>
+    <div className={styles.container}>{props.children}</div>
   </div>
 );
 
-export default (Layout);
+export default Layout;

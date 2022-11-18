@@ -1,11 +1,9 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
-
 
 class JssDocument extends Document {
   static async getInitialProps(ctx) {
-
-
     const registry = new SheetsRegistry();
     const generateId = createGenerateId();
     const originalRenderPage = ctx.renderPage;
@@ -13,15 +11,16 @@ class JssDocument extends Document {
     ctx.renderPage = () =>
       originalRenderPage({
         // useful for wrapping the whole react tree
-        enhanceApp: (App: any) => (props: any) => (
-          <JssProvider generateId={generateId} registry={registry}>
+        enhanceApp: (App: any) => (props: any) =>
+          (
+            <JssProvider generateId={generateId} registry={registry}>
               <App {...props} />
-          </JssProvider>
-        ),
-      })
+            </JssProvider>
+          ),
+      });
 
     // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx);
     return {
       ...initialProps,
       styles: (
@@ -47,8 +46,8 @@ class JssDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default JssDocument
+export default JssDocument;

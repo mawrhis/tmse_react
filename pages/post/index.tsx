@@ -1,10 +1,10 @@
-import React, { memo, useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import React, { memo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Data from '../../public/data/data';
 import { Item } from '..';
 
 interface PostProps {
-  data: Item[] ;
+  data: Item[];
 }
 
 export async function getStaticProps() {
@@ -15,24 +15,21 @@ export async function getStaticProps() {
       data,
     },
     revalidate: 1,
+  };
+}
+
+const Post = ({ data }: PostProps) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(`/post/${data.length}`, `/post/${data.length}`);
+  });
+
+  if (router === undefined) {
+    return null;
   }
-}
 
-const Post = ({}: PostProps) => {
-const router = useRouter();
-if (router === undefined) {
-return null;
-}
-
-
-
-useEffect(()=> {
-  router.push(`/post/${Data.length}`, `/post/${Data.length}`);
-})
-
-  return (   
-  <></>
-  )
+  return <></>;
 };
 
 export default memo(Post);
