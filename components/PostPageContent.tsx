@@ -1,5 +1,4 @@
-import React, { memo, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { memo } from 'react';
 import Data from '../public/data/data';
 import { Item } from '../pages';
 import Layout from './MyLayout';
@@ -34,12 +33,6 @@ const PostPageContent = ({
   postNumber,
   currentPost,
 }: PostPageContentProps) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push(`${postNumber}`, `${postNumber}`);
-  }, [postNumber, router]);
-
   return (
     <div>
       <Layout>
