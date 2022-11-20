@@ -22,7 +22,7 @@ const Post = ({ data }: PostProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    // router.push(`/post/${data.length}`, `/post/${data.length}`);
+    router.push(`/post/${data.length}`, `/post/${data.length}`);
   });
 
   if (router === undefined) {

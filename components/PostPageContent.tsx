@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { useRouter } from 'next/router';
 import Data from '../public/data/data';
 import { Item } from '../pages';
 import Layout from './MyLayout';
@@ -33,14 +34,26 @@ const PostPageContent = ({
   postNumber,
   currentPost,
 }: PostPageContentProps) => {
+  const router = useRouter();
+
+  const onNextPostClick = () => {
+    router.push(`/post/${postNumber + 1}`);
+    setPostNumber(postNumber + 1);
+  };
+
+  const onPreviousPostClick = () => {
+    router.push(`/post/${postNumber - 1}`);
+    setPostNumber(postNumber - 1);
+  };
+
   return (
     <div>
       <Layout>
         <Header
           isFirstPost={isFirstPost}
           isLastPost={isLastPost}
-          onNextPostClick={() => setPostNumber(postNumber + 1)}
-          onPreviousPostClick={() => setPostNumber(postNumber - 1)}
+          onNextPostClick={onNextPostClick}
+          onPreviousPostClick={onPreviousPostClick}
           onRandomPostClick={onRandomPostClick}
         />
         <PostContent

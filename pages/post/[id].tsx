@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostPageContent from '../../components/PostPageContent';
 import Data from '../../public/data/data';
@@ -37,9 +37,16 @@ const PostsRoute = ({ data = Data }: PostsProps) => {
 
   const { id } = router.query;
   const [postNumber, setPostNumber] = useState(parseInt(id as string, 10));
+
+  // useEffect(() => {
+  //   router.push(`/post/${postNumber}`);
+  // }, [router, postNumber]);
+
   const onRandomPostClick = () => {
     const postSum = data.length;
-    setPostNumber(Math.floor(Math.random() * postSum - 1));
+    const random = Math.floor(Math.random() * postSum - 1);
+    setPostNumber(random);
+    router.push(`/post/${random}`);
   };
 
   const isLastPost = postNumber === data.length;
