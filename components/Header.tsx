@@ -16,16 +16,19 @@ const useStyles = createUseStyles({
     width: '100%',
     textAlign: 'center',
     marginTop: '1rem',
+    cursor: 'pointer',
     '& img': {
       position: 'relative',
       width: '100%',
     },
   },
   menu: {
-    width: '100%',
-    margin: '0 auto',
     display: 'flex',
     justifyContent: 'center',
+  },
+  header: {
+    marginBottom: '1rem',
+    display: 'block',
   },
 });
 
@@ -39,7 +42,7 @@ const Header = ({
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.header}>
       <div className={classes.logo}>
         <Link href="/">
           <p>

@@ -10,31 +10,32 @@ const styles = {
     left: '-1px',
     top: '-3px',
 
-    background: 'white',
+    background: '#199488',
     fontWeight: '600',
     fontSize: '14px',
     textAlign: 'center',
-    color: 'grey',
-    borderRadius: '5px',
-    border: 'solid 1px white',
-    boxShadow: 'inset 0px 0px 5px 5px rgba(255,255,255,1)',
+    color: 'white',
+    borderRadius: '16px',
+    border: 'none',
+    // border: 'solid 1px white',
+    // boxShadow: 'inset 0px 0px 5px 5px rgba(255,255,255,1)',
     transition: 'background 500ms, color 300ms, box-shadow 150ms',
 
     '&:hover': {
       background: '#1EB6A7',
-      color: 'white',
       cursor: 'pointer',
-      border: 'solid 2px grey',
-      boxShadow: 'inset 0px 0px 5px 5px rgba(30,182,167,1)',
+      // border: 'solid 1px grey',
+      // boxShadow: 'inset 0px 0px 5px 5px rgba(30,182,167,1)',
       transition: 'background 300ms, color 300ms, box-shadow 150ms',
     },
 
     '&:disabled': {
+      backgroundColor: '#c7c7c7',
       cursor: 'default',
-      color: 'lightGrey',
+      // color: 'lightGrey',
     },
     '&:disabled:hover': {
-      backgroundColor: 'white',
+      backgroundColor: '#c7c7c7',
       boxShadow: 'none',
       border: 'none',
     },
@@ -53,9 +54,6 @@ const Button = ({ classes, ...props }) => (
         {props.text}
       </button>
     </div>
-    <Link as={`/p/${props.id}`} href="/p/[id]">
-      <p>{props.id}</p>
-    </Link>
   </div>
 );
 

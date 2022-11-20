@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import styles from './Post.module.scss';
 
 const gif = [31, 43, 60];
@@ -8,7 +9,8 @@ const imgSuffix = (number) => {
   if (isGif) {
     return 'gif';
   }
-  return 'png';
+  // return 'png';
+  return 'webp';
 };
 
 const comicFile = (number) => {
@@ -30,7 +32,16 @@ const Post = ({ ...props }) => {
   return (
     <div className={styles.post}>
       <h1 className={styles.postTitle}>{props.postTitle}</h1>
-      <img alt={comicFile(props.post)} src={`/img/comics/${comicFile(props.post)}`} />
+      <div className={styles.imageContainer}>
+        <Image
+          fill
+          alt={comicFile(props.post)}
+          // src={`/img/comics/${comicFile(props.post)}`}
+          src={`/imgwebp/${comicFile(props.post)}`}
+          style={{ objectFit: 'contain', objectPosition: 'top' }}
+        />
+      </div>
+      {/* <img alt={comicFile(props.post)} src={`/img/comics/${comicFile(props.post)}`} /> */}
     </div>
   );
 };
