@@ -1,5 +1,4 @@
 import injectSheet from 'react-jss';
-import Link from 'next/link';
 import React from 'react';
 
 const styles = {

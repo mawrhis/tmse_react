@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostPageContent from '../../components/PostPageContent';
 import Data from '../../public/data/data';
@@ -28,7 +28,7 @@ const pagesToGenerate = () => {
 export async function getStaticPaths() {
   return {
     paths: [...pagesToGenerate()],
-    fallback: false, // See the "fallback" section below
+    fallback: false,
   };
 }
 
